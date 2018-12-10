@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+        <title>Document</title>
+    </head>
+    <body>
+        <h1>svg test</h1>
+        <script>
+        
+        var svg = d3.select("body").append("svg").attr("width", 400).attr("height", 300)
+
+        var dataset = [ 250 , 210 , 170 , 130 , 90 ];  //数据（表示矩形的宽度）
+
+        var rectHeight = 25;   //每个矩形所占的像素高度(包括空白)
+
+        svg.selectAll("rect")
+            .data(dataset)
+            .enter()
+            .append("rect")
+            .attr("x",20)
+            .attr("y",function(d,i){
+                return i * rectHeight;
+            })
+            .attr("width",function(d){
+                return d;
+            })
+            .attr("height",rectHeight-2)
+            .attr("fill","steelblue");
+    </script>
+    </body>
+</html>

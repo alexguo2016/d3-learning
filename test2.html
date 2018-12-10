@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+    </head>
+    <body>
+        <p>one</p>
+        <p>two</p>
+        <p>three</p>
+
+        <div>v-once</div>
+        <div>two</div>
+        <div>three</div>
+        <div>four</div>
+
+        <script>
+        var ps = d3.selectAll("p")
+        var str = "测试数据"
+        ps.datum(str)
+        // 这个时候, 只是绑定, 没有更改值
+
+        ps.text(function(d, i) {
+            return `第${i}个数据是${d}`
+        })
+        // 直到这个匿名函数被执行, 选择集的数据才会改变
+        
+        var divs = d3.selectAll("div")
+        var dataset = ["apple", "pear"]
+
+        divs.data(dataset).text(function(d, i) {
+            return d
+        })
+    </script>
+    </body>
+</html>

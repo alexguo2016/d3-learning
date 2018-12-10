@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <title>Document</title>
+</head>
+<body>
+    <p>this is a p element</p>
+    <p id="testID">two</p>
+    <p class="testClass">hahaa</p>
+    <script>
+        // var p = d3.select("body").append("p", "#testID").text(function(){
+        //     console.log("inn")
+        //     return "asdf"
+        // })
+        var body = d3.select("body")
+        body.append("p", "#testID").text(function() {
+            return `<div class="divClass">hahaha</div>`
+            // 不行
+        })
+
+        var p = d3.select(".testClass").remove()
+    </script>
+</body>
+</html>
