@@ -11,25 +11,29 @@
         <h1>svg test</h1>
         <script>
         
-        var svg = d3.select("body").append("svg").attr("width", 400).attr("height", 300)
+        var dataset = [1.2, 2.3, 0.9, 1.5, 3.3];
+        var min = d3.min(dataset);
+        var max = d3.max(dataset);
 
-        var dataset = [ 250 , 210 , 170 , 130 , 90 ];  //数据（表示矩形的宽度）
+        var linear = d3.scale.linear()
+                .domain([min, max])
+                .range([0, 300]);
 
-        var rectHeight = 25;   //每个矩形所占的像素高度(包括空白)
+        var a = linear(0.9);    //返回 0
+        var b = linear(2.3);    //返回 175
+        var c = linear(3.3);    //返回 300
+        console.log(a, b, c)
 
-        svg.selectAll("rect")
-            .data(dataset)
-            .enter()
-            .append("rect")
-            .attr("x",20)
-            .attr("y",function(d,i){
-                return i * rectHeight;
-            })
-            .attr("width",function(d){
-                return d;
-            })
-            .attr("height",rectHeight-2)
-            .attr("fill","steelblue");
+        var index = [0, 1, 2, 3, 4];
+        var color = ["red", "blue", "green", "yellow", "black"];
+        var ordinal = d3.scale.ordinal()
+                .domain(index)
+                .range(color);
+
+        var x = ordinal(0); //返回 red
+        var y = ordinal(2); //返回 green
+        var z = ordinal(4); //返回 black
+        console.log(x, y, z)
     </script>
     </body>
 </html>

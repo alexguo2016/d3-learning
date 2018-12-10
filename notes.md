@@ -114,6 +114,30 @@ svg.selectAll("rect")   //选择svg内所有的矩形
 1. 线性比例尺
     将dataset中最小的映射成min, 最大的为max
     ````js
-    
+    var dataset = [1.2, 2.3, 0.9, 1.5, 3.3];
+    var min = d3.min(dataset);
+    var max = d3.max(dataset);
+
+    var linear = d3.scale.linear()
+            .domain([min, max])
+            .range([0, 300]);
+
+    linear(0.9);    //返回 0
+    linear(2.3);    //返回 175
+    linear(3.3);    //返回 300, 注意, liner是一个函数, 可以var a = liner(xx) 这样使用
     ````
 2. 序数比例尺
+    其实就是一一对应, 两个dataset之间的
+    ````js
+    var index = [0, 1, 2, 3, 4];
+    var color = ["red", "blue", "green", "yellow", "black"];
+    var ordinal = d3.scale.ordinal()
+            .domain(index)
+            .range(color);
+
+    ordinal(0); //返回 red
+    ordinal(2); //返回 green
+    ordinal(4); //返回 black
+    ````
+
+    http://www.ourd3js.com/wordpress/104/ 暂时到这里
